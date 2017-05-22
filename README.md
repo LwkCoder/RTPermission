@@ -45,6 +45,14 @@ Android6.0发布后带来的运行时权限机制，使得开发者的工作又�
 ![](https://github.com/Vanish136/RTPermission/raw/master/picture/sample02.png)
 <br />
 
+## 混淆配置
+
+```
+-dontwarn com.lwkandroid.rtpermission.**
+-keep class com.lwkandroid.rtpermission.**{*;}
+```
+<br />
+
 ### 附录：9大组需要适配的权限
 
 ```
