@@ -1,15 +1,4 @@
 <resources>
-    <string name="permission_rationale_contact">通讯录权限：用于访问系统通讯录</string>
-    <string name="permission_rationale_phone">通话权限：用于拨打电话、管理通话和获取设备信息和状态</string>
-    <string name="permission_rationale_audio">录音权限：用于录制音频</string>
-    <string name="permission_rationale_calendar">日历权限：用于访问用户日程信息</string>
-    <string name="permission_rationale_camera">相机权限：用于拍照和录制视频</string>
-    <string name="permission_rationale_sensors">身体传感器权限：用于访问生命体征传感器数据</string>
-    <string name="permission_rationale_location">定位权限：用于访问位置信息</string>
-    <string name="permission_rationale_sdcard">外部存储权限：用于访问照片、媒体和文件</string>
-    <string name="permission_rationale_sms">短信权限：用于发送和查看短信</string>
-    <string name="permission_rationale_unkonw">未知权限：非运行时权限</string>
-
     <string name="permission_contact">系统通讯录</string>
     <string name="permission_phone">拨打电话</string>
     <string name="permission_audio">录音</string>

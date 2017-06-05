@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -30,6 +31,7 @@ import java.util.List;
 
 public class RTDialog extends DialogFragment implements View.OnClickListener
 {
+    private static final String TAG = "RTDialog";
     private List<PermissionItem> mPermissionList = new LinkedList<>();
     private DialogInterface.OnClickListener mPosClickListener;
     private DialogInterface.OnClickListener mNegClickListener;
@@ -86,21 +88,8 @@ public class RTDialog extends DialogFragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState)
     {
         getDialog().requestWindowFeature(STYLE_NO_TITLE);
-        getDialog().setCancelable(false);
+        getDialog().setCancelable(true);
         getDialog().setCanceledOnTouchOutside(false);
-        //按下back不消失
-        getDialog().setOnKeyListener(new DialogInterface.OnKeyListener()
-        {
-            @Override
-            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event)
-            {
-                if (keyCode == KeyEvent.KEYCODE_BACK)
-                {
-                    return true;
-                }
-                return false;
-            }
-        });
 
         View contentView = inflater.inflate(R.layout.layout_rtdialog, container, false);
         mTvTitle = (TextView) contentView.findViewById(R.id.tv_rtdialog_title);
@@ -126,7 +115,21 @@ public class RTDialog extends DialogFragment implements View.OnClickListener
     public void onStart()
     {
         //设置Dialog宽度
-        getDialog().getWindow().getAttributes().width = getResources().getDisplayMetrics().widthPixels - 100;
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        getDialog().getWindow().getAttributes().width = Math.min(metrics.widthPixels, metrics.heightPixels) - 100;
+        //按下back不消失
+        getDialog().setOnKeyListener(new DialogInterface.OnKeyListener()
+        {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event)
+            {
+                if (keyCode == KeyEvent.KEYCODE_BACK)
+                {
+                    return true;
+                }
+                return false;
+            }
+        });
         super.onStart();
     }
 

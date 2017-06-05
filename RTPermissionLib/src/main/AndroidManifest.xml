@@ -8,7 +8,6 @@
         <activity
             android:name=".ui.PermissionActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
             android:theme="@style/RTPActStyle"
             android:windowSoftInputMode="adjustPan">
         </activity>
