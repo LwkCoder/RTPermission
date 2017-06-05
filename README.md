@@ -12,7 +12,7 @@ Android6.0发布后带来的运行时权限机制，使得开发者的工作又�
 **1. Gradle中引入库**
 
 ```
-          compile 'com.lwkandroid:RTPermissionLib:1.0.0'
+          compile 'com.lwkandroid:RTPermissionLib:1.1.0'
 ```
 <br />
 
