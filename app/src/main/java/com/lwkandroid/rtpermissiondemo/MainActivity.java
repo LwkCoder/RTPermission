@@ -3,7 +3,6 @@ package com.lwkandroid.rtpermissiondemo;
 import android.Manifest;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -31,15 +30,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             case R.id.btn_main01:
                 new RTPermission.Builder()
-                        .permissions(new String[]{Manifest.permission.BODY_SENSORS})
+                        .permissions(Manifest.permission.BODY_SENSORS)
                         .build()
                         .start(this, this);
                 break;
             case R.id.btn_main02:
                 new RTPermission.Builder()
-                        .permissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE
-                                , Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO
-                                , Manifest.permission.ACCESS_FINE_LOCATION})
+                        .permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE
+                                , Manifest.permission.READ_EXTERNAL_STORAGE
+                                , Manifest.permission.RECORD_AUDIO
+                                , Manifest.permission.CAMERA
+                                , Manifest.permission.ACCESS_FINE_LOCATION)
                         .build()
                         .start(this, this);
                 break;
@@ -56,9 +57,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onDeined(String[] dinedPermissions)
     {
         Toast.makeText(MainActivity.this, "无法获取所有权限", Toast.LENGTH_SHORT).show();
-        for (String permission : dinedPermissions)
-        {
-            Log.e("ss", "被拒绝的权限:" + permission);
-        }
     }
 }

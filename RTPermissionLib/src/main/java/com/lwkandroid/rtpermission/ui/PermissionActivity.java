@@ -3,7 +3,6 @@ package com.lwkandroid.rtpermission.ui;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -74,16 +73,16 @@ public class PermissionActivity extends AppCompatActivity
                 boolean needShowRationale = false;
                 for (String permission : allPermissions)
                 {
-                    if (ActivityCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED)
+                    if (!RTUtils.hasPermission(this, permission))
                     {
                         mNeedRequestList.add(permission);
                         if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission))
                             needShowRationale = true;
                     }
                 }
-
+                Log.i(TAG, "need to request permissions: " + mNeedRequestList.toString());
                 //判断筛选结果
-                if (mNeedRequestList != null && mNeedRequestList.size() == 0)
+                if (mNeedRequestList.size() == 0)
                 {
                     invokeAllGranted();
                 } else
@@ -135,14 +134,32 @@ public class PermissionActivity extends AppCompatActivity
         {
             //筛选结果
             boolean allGranted = true, nerverAsk = false;
-            for (int i = 0, l = grantResults.length; i < l; i++)
-            {
-                String permission = permissions[i];
-                int grandResult = grantResults[i];
-                if (grandResult == PackageManager.PERMISSION_DENIED)
-                {
-                    allGranted = false;
+            //            for (int i = 0, l = grantResults.length; i < l; i++)
+            //            {
+            //                String permission = permissions[i];
+            //                int grandResult = grantResults[i];
+            //                Log.i(TAG, "onRequestPermissionsResult: permission=" + permission + " result=" + grandResult);
+            //                if (grandResult == PackageManager.PERMISSION_DENIED)
+            //                {
+            //                    allGranted = false;
+            //
+            //                    if (mDeniedList == null)
+            //                        mDeniedList = new LinkedList<>();
+            //                    mDeniedList.add(permission);
+            //
+            //                    if (!ActivityCompat.shouldShowRequestPermissionRationale(this, permission))
+            //                        nerverAsk = true;
+            //                }
+            //            }
 
+            //唉！为了兼容某些第三方ROM，这里改为再次检查所有权限来判断申请结果
+            String[] allPermissions = mOptions.getPermissions();
+            for (String permission : allPermissions)
+            {
+                if (!RTUtils.hasPermission(this, permission))
+                {
+                    Log.i(TAG, "request permission result：" + permission + " not granted");
+                    allGranted = false;
                     if (mDeniedList == null)
                         mDeniedList = new LinkedList<>();
                     mDeniedList.add(permission);

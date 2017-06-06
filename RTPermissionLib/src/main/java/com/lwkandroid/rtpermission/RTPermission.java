@@ -34,7 +34,7 @@ public class RTPermission
             mOptions = new PermissionOptions();
         }
 
-        public Builder permissions(String[] permissions)
+        public Builder permissions(String... permissions)
         {
             mOptions.setPermissions(permissions);
             return this;

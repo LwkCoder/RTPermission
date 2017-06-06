@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
+import android.support.v4.app.AppOpsManagerCompat;
+import android.support.v4.content.ContextCompat;
 
 /**
  * 工具类
@@ -42,5 +45,32 @@ public class RTUtils
         intent.setData(Uri.parse("package:" + context.getPackageName()));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+    }
+
+    /**
+     * 检查是否有某项权限的试用权
+     *
+     * @param context    Context环境
+     * @param permission 权限
+     * @return true:有 false:没有
+     */
+    public static boolean hasPermission(Context context, String permission)
+    {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+            return true;
+
+        try
+        {
+            String op = AppOpsManagerCompat.permissionToOp(permission);
+            int opResult = AppOpsManagerCompat.noteProxyOp(context, op, context.getPackageName());
+            int rtResult = ContextCompat.checkSelfPermission(context, permission);
+            if (opResult == AppOpsManagerCompat.MODE_ALLOWED && rtResult == PackageManager.PERMISSION_GRANTED)
+                return true;
+            else
+                return false;
+        } catch (Exception e)
+        {
+            return false;
+        }
     }
 }
