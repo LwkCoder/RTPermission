@@ -12,7 +12,7 @@ Android6.0发布后带来的运行时权限机制，使得开发者的工作又�
 **1. Gradle中引入库**
 
 ```
-          compile 'com.lwkandroid:RTPermissionLib:1.1.0'
+          compile 'com.lwkandroid:RTPermissionLib:1.2.0'
 ```
 <br />
 
@@ -20,7 +20,7 @@ Android6.0发布后带来的运行时权限机制，使得开发者的工作又�
 
 ```
           new RTPermission.Builder()
-                .permissions(new String[]{各种需要申请的权限})
+                .permissions(String... permissions)
                 .build()
                 .start(Activity activity, new OnPermissionResultListener()
                 {
