@@ -19,7 +19,7 @@ public class RTPermission
         this.mOptions = options;
     }
 
-    public void start(Activity activity, OnPermissionResultListener listener)
+    private void start(Activity activity, OnPermissionResultListener listener)
     {
         PermissionActivity.setOnGrandResultListener(listener);
         PermissionActivity.start(activity, mOptions);
@@ -40,9 +40,14 @@ public class RTPermission
             return this;
         }
 
-        public RTPermission build()
+        public void start(Activity activity, OnPermissionResultListener listener)
         {
-            return new RTPermission(mOptions);
+            new RTPermission(mOptions).start(activity, listener);
         }
+
+        //        public RTPermission build()
+        //        {
+        //            return new RTPermission(mOptions);
+        //        }
     }
 }

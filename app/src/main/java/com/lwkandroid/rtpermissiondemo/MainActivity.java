@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_main01:
                 new RTPermission.Builder()
                         .permissions(Manifest.permission.BODY_SENSORS)
-                        .build()
                         .start(this, this);
                 break;
             case R.id.btn_main02:
@@ -41,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 , Manifest.permission.RECORD_AUDIO
                                 , Manifest.permission.CAMERA
                                 , Manifest.permission.ACCESS_FINE_LOCATION)
-                        .build()
                         .start(this, this);
                 break;
         }
