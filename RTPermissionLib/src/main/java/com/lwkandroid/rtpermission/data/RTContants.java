@@ -1,10 +1,5 @@
 package com.lwkandroid.rtpermission.data;
 
-import android.support.annotation.IntDef;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-
 /**
  * 常量
  */
@@ -28,11 +23,5 @@ public class RTContants
         public static final int MICPHONE = 0X7;
         public static final int SMS = 0X8;
         public static final int UNKOWN = 0X9;
-
-        @IntDef({CONTACT, PHONE, CALENDAR, CAMERA, SENSORS, LOCATION, STORAGE, MICPHONE, SMS, UNKOWN})
-        @Retention(RetentionPolicy.SOURCE)
-        public @interface Group
-        {
-        }
     }
 }

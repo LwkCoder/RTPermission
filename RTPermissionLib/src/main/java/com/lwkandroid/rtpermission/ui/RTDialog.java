@@ -5,9 +5,6 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.view.KeyEvent;
@@ -35,9 +32,7 @@ public class RTDialog extends DialogFragment implements View.OnClickListener
     private List<PermissionItem> mPermissionList = new LinkedList<>();
     private DialogInterface.OnClickListener mPosClickListener;
     private DialogInterface.OnClickListener mNegClickListener;
-    @StringRes
     private int mPosTvResId = -1;
-    @StringRes
     private int mNegTvResId = -1;
     private String mMessage;
     private TextView mTvTitle;
@@ -83,9 +78,8 @@ public class RTDialog extends DialogFragment implements View.OnClickListener
         this.mMessage = message;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState)
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         getDialog().requestWindowFeature(STYLE_NO_TITLE);
         getDialog().setCancelable(true);
@@ -219,17 +213,12 @@ public class RTDialog extends DialogFragment implements View.OnClickListener
 
     private class PermissionItem
     {
-        @DrawableRes
         private int logo;
-        @StringRes
         private int name;
-        @StringRes
         private int desc;
-        @RTContants.Permisson.Group
         private int gruop;
 
-        public PermissionItem(@DrawableRes int logo, @StringRes int name,
-                              @StringRes int desc, @RTContants.Permisson.Group int gruop)
+        public PermissionItem(int logo, int name, int desc, int gruop)
         {
             this.logo = logo;
             this.name = name;
@@ -346,14 +335,14 @@ public class RTDialog extends DialogFragment implements View.OnClickListener
             return this;
         }
 
-        public Builder positiveButton(@StringRes int resId, DialogInterface.OnClickListener listener)
+        public Builder positiveButton(int resId, DialogInterface.OnClickListener listener)
         {
             mDialog.setPosTvResId(resId);
             mDialog.setPosClickListener(listener);
             return this;
         }
 
-        public Builder negativeButton(@StringRes int resId, DialogInterface.OnClickListener listener)
+        public Builder negativeButton(int resId, DialogInterface.OnClickListener listener)
         {
             mDialog.setNegTvResId(resId);
             mDialog.setNegClickListener(listener);

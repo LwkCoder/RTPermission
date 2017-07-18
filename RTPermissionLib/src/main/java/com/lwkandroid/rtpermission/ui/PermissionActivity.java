@@ -1,13 +1,11 @@
 package com.lwkandroid.rtpermission.ui;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.lwkandroid.rtpermission.R;
@@ -22,7 +20,7 @@ import java.util.List;
 /**
  * 请求权限的Activity
  */
-public class PermissionActivity extends AppCompatActivity
+public class PermissionActivity extends Activity
 {
     private static final String TAG = "PermissionActivity";
     private static OnPermissionResultListener mListener;
@@ -76,7 +74,7 @@ public class PermissionActivity extends AppCompatActivity
                     if (!RTUtils.hasPermission(this, permission))
                     {
                         mNeedRequestList.add(permission);
-                        if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission))
+                        if (shouldShowRequestPermissionRationale(permission))
                             needShowRationale = true;
                     }
                 }
@@ -93,8 +91,7 @@ public class PermissionActivity extends AppCompatActivity
                         showReqeustRationaleDialog();
                     } else
                     {
-                        ActivityCompat.requestPermissions(PermissionActivity.this
-                                , mNeedRequestList.toArray(new String[mNeedRequestList.size()]), REQUEST_CODE);
+                        requestPermissions(mNeedRequestList.toArray(new String[mNeedRequestList.size()]), REQUEST_CODE);
                     }
                 }
             }
@@ -106,6 +103,7 @@ public class PermissionActivity extends AppCompatActivity
     }
 
     //对权限申请作出解释
+    @SuppressLint("NewApi")
     private void showReqeustRationaleDialog()
     {
         String appName = RTUtils.getAppName(this.getApplicationContext());
@@ -119,15 +117,15 @@ public class PermissionActivity extends AppCompatActivity
                     public void onClick(DialogInterface dialog, int which)
                     {
                         dialog.dismiss();
-                        ActivityCompat.requestPermissions(PermissionActivity.this
-                                , mNeedRequestList.toArray(new String[mNeedRequestList.size()]), REQUEST_CODE);
+                        requestPermissions(mNeedRequestList.toArray(new String[mNeedRequestList.size()]), REQUEST_CODE);
                     }
                 })
                 .show(this);
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+    @SuppressLint("NewApi")
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
     {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CODE)
@@ -164,7 +162,7 @@ public class PermissionActivity extends AppCompatActivity
                         mDeniedList = new LinkedList<>();
                     mDeniedList.add(permission);
 
-                    if (!ActivityCompat.shouldShowRequestPermissionRationale(this, permission))
+                    if (!shouldShowRequestPermissionRationale(permission))
                         nerverAsk = true;
                 }
             }
