@@ -12,14 +12,13 @@ Android6.0发布后带来的运行时权限机制，使得开发者的工作又�
 **1. Gradle中引入库**
 
 ```
-          compile 'com.lwkandroid:RTPermissionLib:1.2.1'
+          compile 'com.lwkandroid:RTPermissionLib:1.3.0'
 ```
 <br />
 
 **2. 代码中调用**<br />
 
 ```
-          //V1.2.1调用方式
           new RTPermission.Builder()
                           .permissions(String... permissions)
                           .start(Activity activity, new OnPermissionResultListener()
@@ -36,26 +35,6 @@ Android6.0发布后带来的运行时权限机制，使得开发者的工作又�
                                    //有权限未获得试用期的回调
                                }
                          });
-
-          //V1.2.1以前的调用方式
-          new RTPermission.Builder()
-                .permissions(String... permissions)
-                .build()
-                .start(Activity activity, new OnPermissionResultListener()
-                {
-                     @Override
-                      public void onAllGranted(String[] allPermissions)
-                     {
-                         //所有权限都已获得使用权后的回调
-                     }
-
-                     @Override
-                     public void onDeined(String[] dinedPermissions)
-                     {
-                         //有权限未获得试用期的回调
-                     }
-               });
-
 ```
 <br />
 
