@@ -9,10 +9,13 @@ http://blog.csdn.net/lwk520136/article/details/72621729 <br />
 Android6.0发布后带来的运行时权限机制，使得开发者的工作又多了一点，在程序需要使用到9类敏感权限时必须去动态申请权限使用权，然而按照标准写法实在是太繁琐了，要是每一个权限都写一大堆申请步骤，我估计开发者分分钟暴走。所以，封装一个统一的请求框架是很有必要的，**RTPermission**就是为了简化申请步骤而做的，有需要的可参考一下，欢迎star和fork。
 <br />
 ## 使用方式：<br />
+【最新版本号以[这里](https://github.com/Vanish136/RTPermission/releases)为准】
+
 **1. Gradle中引入库**
 
 ```
-          compile 'com.lwkandroid:RTPermissionLib:1.3.0'
+    #last-version请查看上面的最新版本号
+    compile 'com.lwkandroid:RTPermissionLib:last-version'
 ```
 <br />
 

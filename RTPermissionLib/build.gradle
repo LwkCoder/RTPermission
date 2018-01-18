@@ -30,7 +30,7 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 def lib_name="RTPermission"
-version = "1.3.0"
+version = "1.3.1"
 group = "com.lwkandroid"
 def siteUrl = 'https://github.com/Vanish136/RTPermission'
 def gitUrl = 'https://github.com/Vanish136/RTPermission.git'

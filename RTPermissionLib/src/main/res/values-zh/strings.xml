@@ -1,0 +1,30 @@
+<resources>
+    <string name="permission_contact">系统通讯录</string>
+    <string name="permission_phone">拨打电话</string>
+    <string name="permission_audio">录音</string>
+    <string name="permission_calendar">日历</string>
+    <string name="permission_camera">摄像头</string>
+    <string name="permission_sensors">身体传感器</string>
+    <string name="permission_location">位置信息</string>
+    <string name="permission_sdcard">外置存储卡</string>
+    <string name="permission_sms">短信</string>
+    <string name="permission_unkown">未知权限（非运行时权限）</string>
+
+    <string name="rationale_contact">用于访问系统通讯录、获取通话记录</string>
+    <string name="rationale_phone">用于拨打电话、管理通话和获取设备信息和状态</string>
+    <string name="rationale_audio">用于麦克风录制音频</string>
+    <string name="rationale_calendar">用于访问用户日程信息</string>
+    <string name="rationale_camera">用于拍照和录制视频</string>
+    <string name="rationale_sensors">用于访问生命体征传感器数据</string>
+    <string name="rationale_location">用于获取位置信息</string>
+    <string name="rationale_sdcard">用于访问照片、媒体和文件</string>
+    <string name="rationale_sms">用于发送和查看短信</string>
+    <string name="rationale_unknow">无需在运行时申请的权限</string>
+
+    <string name="rtpermission_dialog_title">权限提醒</string>
+    <string name="rtpermission_rationale_dialog_message">%1$s需要使用以下权限，拒绝后可能导致程序无法正常运行</string>
+    <string name="rtpermission_rationale_dialog_next">下一步</string>
+    <string name="rtpermission_nerverask_dialog_message">%1$s无法获取以下权限，您可在设置界面手动打开以保证程序功能正常运行</string>
+    <string name="rtpermission_nerverask_dialog_cancel">取消</string>
+    <string name="rtpermission_nerverask_dialog_setting">去设置</string>
+</resources>

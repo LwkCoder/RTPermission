@@ -59,13 +59,20 @@ public class RTUtils
 
         try
         {
-            String op = AppOpsManagerCompat.permissionToOp(permission);
-            int opResult = AppOpsManagerCompat.noteProxyOp(context, op, context.getPackageName());
-            int rtResult = context.checkSelfPermission(permission);
-            if (opResult == AppOpsManagerCompat.MODE_ALLOWED && rtResult == PackageManager.PERMISSION_GRANTED)
-                return true;
-            else
+            if (context.checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED)
+            {
+                String op = AppOpsManagerCompat.permissionToOp(permission);
+                return AppOpsManagerCompat.noteProxyOp(context, op, context.getPackageName())
+                        == AppOpsManagerCompat.MODE_ALLOWED;
+            } else
                 return false;
+            //            String op = AppOpsManagerCompat.permissionToOp(permission);
+            //            int opResult = AppOpsManagerCompat.noteProxyOp(context, op, context.getPackageName());
+            //            int rtResult = context.checkSelfPermission(permission);
+            //            if (opResult == AppOpsManagerCompat.MODE_ALLOWED && rtResult == PackageManager.PERMISSION_GRANTED)
+            //                return true;
+            //            else
+            //                return false;
         } catch (Exception e)
         {
             return false;
