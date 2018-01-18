@@ -15,7 +15,12 @@ Android6.0发布后带来的运行时权限机制，使得开发者的工作又�
 
 ```
     #last-version请查看上面的最新版本号
+
+    #AndroidStudio3.0以下
     compile 'com.lwkandroid:RTPermissionLib:last-version'
+
+    #AndroidStudio3.0以上
+    implemetation 'com.lwkandroid:RTPermissionLib:last-version'
 ```
 <br />
 
