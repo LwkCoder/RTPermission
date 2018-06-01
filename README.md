@@ -1,3 +1,5 @@
+# **[Deprecated]**
+**推荐使用[AndPermission](https://github.com/yanzhenjie/AndPermission)**
 # RTPermission
 Android6.0 运行时权限申请工具，Android Marshmallow runtime permission utils
 
